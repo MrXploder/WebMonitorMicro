@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" ng-strict-di>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>WebMonitor</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.4.0/css/ngDialog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.4.0/css/ngDialog-theme-default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ng-notify@0.7.1/dist/ng-notify.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/es.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script src="https://code.angularjs.org/1.7.2/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.4.0/js/ngDialog.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+  <script src="https://code.angularjs.org/1.7.2/angular-resource.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.20/angular-ui-router.min.js"></script>
+  <script src="https://code.angularjs.org/1.7.2/angular-messages.js"></script>
+  <script src="https://code.angularjs.org/1.7.2/angular-animate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-notify/0.8.0/ng-notify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://code.angularjs.org/1.7.2/angular-sanitize.js"></script>
+  <script src="https://cdn.rawgit.com/AngularClass/angular-websocket/v2.0.0/dist/angular-websocket.js"></script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');</script>
+
+</head>
+<body ondragstart="return false;" ondrop="return false;">
+  <!-- <pre>{{$rs.$currentUser() |json}}</pre> -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="home">WebMonitor</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav" style="width: 80%">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="config"><i class="fas fa-cog"></i></a></li>
+          <li><a ui-sref="logout"><i class="fas fa-times"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid" style="margin-bottom: 60px; margin-top: 70px;">
+    <ui-view ng-hide="$rs.$isRouteChanging"></ui-view>
+  </div>
+  <br>
+  <!-- start template tags -->
+  <link rel="stylesheet" href="css/10custom.css?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"/>
+  <script src="src/vendor/99angular-templates.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/10index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/11bootstrap.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/12info.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/20uiRouterProvider.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/21localStorageProvider.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/22ngDialogProvider.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/module/30run.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/hasError/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/hasSuccess/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/hasWarning/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/ngCurrency/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/ngVisible/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/routeLoadingIndicator/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/directive/stringToNumber/index.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/factory/Auth.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/factory/Printer.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/factory/WebMonitor.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/filter/characterCounter.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/filter/dateRange.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/filter/timeStampTo.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/filter/unique.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/filter/wordCounter.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <script src="src/route/home/controller.js?v=c9245ea8413de157ea1c2ab31ea3947bd0596432"></script>
+  <!-- end template tags -->
+</body>
+</html>

@@ -1,0 +1,8 @@
+<div class="col-lg-10 col-lg-offset-1">
+	<div class="panel panel-default">
+		<div class="panel-body panel-shadow">
+			<canvas id="base" class="chart-bar"	chart-data="$ctrl.webMonitor.collection" chart-labels="$ctrl.webMonitor.labels" chart-colors="$ctrl.colors" chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride"></canvas>
+			<pre>{{$ctrl.webMonitor | json}}</pre>
+		</div>
+	</div>
+</div>
