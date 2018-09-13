@@ -1,7 +1,7 @@
 # WebMonitorMicro
 Proyecto enfocado en captar los impulsos opticos de los medidores electronicos monofasicos.
 
-#About
+# About
 El proyecto se basa en captar los impulsos generados por un LED indicador que poseen los medidores electronicos monofasicos
 encontrados en las casas con instalaciones electricas modernas. 
 
