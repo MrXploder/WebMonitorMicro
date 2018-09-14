@@ -8,37 +8,26 @@
 	WebMonitorFactory.$inject = ["$websocket"];
 
 	function WebMonitorFactory($websocket) {
-		// Open a WebSocket connection
-		let dataStream = $websocket('ws://localhost:12345');
+		const dataStream = $websocket('ws://localhost:81');
+		const collection = [];
+		const kilowatts = [];
+		let currentKwValue = 0;
+		let previousKwValue = 0;
 
-		const rawData = [];
-		const averageData = [];
-		const timeStampLabels = [];
+		dataStream.onMessage(function(message){
+			let messageData = JSON.parse(message.data);
+			collection.push(messageData);
 
-		dataStream.onMessage(({data: message}) => {
-			message = parseInt(message);
-
-			timeStampLabels
-				.splice(0, 1)
-				.push(moment().utc().format("HH:mm:ss"));
-
-			rawData
-				.splice(0, 1)
-				.push(message);
-
-			averageData
-				.splice(0, 1)
-				.push(Math.floor(rawData.reduce((accumulator, data) => accumulator + data, 0) / rawData.length));
+			let currentKwValue = Math.floor(messageData.value / 100);
+			if(previousKwValue < currentKwValue) {
+				kilowatts.push({value: currentKwValue, price: (currentKwValue * 199)});
+				previousKwValue = angular.copy(currentKwValue);
+			}
 		});
 
 		return {
-			collection: [rawData, averageData],
-			labels: timeStampLabels,
-			get: function() {
-				dataStream.send(JSON.stringify({
-					action: 'get'
-				}));
-			}
-		};
+			collection: collection,
+			kilowatts: kilowatts,
+		}
 	}
 })();
