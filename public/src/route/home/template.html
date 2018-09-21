@@ -1,34 +1,44 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-6 col-sm-12">
+		<div class="col-lg-6">
 			<div class="panel panel-default panel-shadow">
-				<div class="panel-heading h4" style="text-align: center;">
+				<div class="panel-heading h4 text-center">
 					¿Cuál fue mi consumo en los últimos 13 meses?
 				</div>
-				<div class="panel-body" style="min-height: 484px">
+				<div class="panel-body" style="min-height: 200px">
 					<canvas id="bar" class="chart chart-bar" chart-colors="$ctrl.$Chart.colors" chart-data="$ctrl.$Chart.data" chart-labels="$ctrl.$Chart.labels" chart-series="$ctrl.$Chart.series" chart-options="$ctrl.$Chart.options"></canvas>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-5 col-lg-offset-1 col-sm-12">
-			<div class="row">
-				<div class="panel panel-default panel-shadow">
-					<div class="panel-heading h4 text-center">
-						Este mes consumiste aproximadamente <strong>{{$ctrl.$ChartTwo.percentage}}% menos energía</strong> que el mismo mes del año pasado
-					</div>
-					<div class="panel-body" style="min-height: 200px">
-						<canvas id="bar" class="chart chart-bar" chart-colors="['#eeeeee', '#212121']" chart-data="$ctrl.$ChartTwo.data" chart-labels="['', 'kWh']" chart-series="['Mismo mes del año pasado']" chart-options="$ctrl.$Chart.options"></canvas>
-					</div>
+		<div class="col-lg-6">
+			<div class="panel panel-default panel-shadow">
+				<div class="panel-heading h4 text-center">
+					Total a pagar por energia consumida
+				</div>
+				<div class="panel-body" style="min-height: 200px">
+					<h1><i class="fas fa-money-bill text-success"></i> {{$ctrl.$WebMonitor[12].diffBill | currency:"$":0}}</h1>
 				</div>
 			</div>
-			<div class="row">
-				<div class="panel panel-default panel-shadow">
-					<div class="panel-heading h4 text-center">
-						Este mes consumiste aproximadamente <strong>{{$ctrl.$ChartThree.percentage}}% menos energía</strong> que el mes pasado
-					</div>
-					<div class="panel-body" style="min-height: 200px">
-						<canvas id="bar" class="chart chart-bar" chart-colors="['#607d8b', '#212121']" chart-data="$ctrl.$ChartThree.data" chart-labels="['', 'kWh']" chart-series="['Mes pasado']" chart-options="$ctrl.$Chart.options"></canvas>
-					</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default panel-shadow">
+				<div class="panel-heading h4 text-center">
+					Este mes has consumido aproximadamente <strong>{{$ctrl.$ChartTwo.percentage}}% {{$ctrl.$ChartTwo.relation}} energía</strong> que el mismo mes del año pasado
+				</div>
+				<div class="panel-body" style="min-height: 200px">
+					<canvas id="bar" class="chart chart-bar" chart-colors="['#eeeeee', '#212121']" chart-data="$ctrl.$ChartTwo.data" chart-labels="['', 'kWh']" chart-series="['Mismo mes del año pasado']" chart-options="$ctrl.$Chart.options"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-default panel-shadow">
+				<div class="panel-heading h4 text-center">
+					Este mes consumiste aproximadamente <strong>{{$ctrl.$ChartThree.percentage}}% {{$ctrl.$ChartThree.relation}} energía</strong> que el mes pasado
+				</div>
+				<div class="panel-body" style="min-height: 200px">
+					<canvas id="bar" class="chart chart-bar" chart-colors="['#607d8b', '#212121']" chart-data="$ctrl.$ChartThree.data" chart-labels="['', 'kWh']" chart-series="['Mes pasado']" chart-options="$ctrl.$Chart.options"></canvas>
 				</div>
 			</div>
 		</div>

@@ -10,4 +10,4 @@
 			company: "",
 		});
 
-})(angular);
+})(window.angular);

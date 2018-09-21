@@ -10,6 +10,11 @@ const wss = new WebSocket.Server({
 
 wss.on('connection', function connection(ws) {
 	const jArrayData = [{
+		value: 336200,
+		diff: 20000,
+		month: 8,
+		year: 2017,
+	},{
 		value: 370400,
 		diff: 34200,
 		month: 9,
@@ -70,7 +75,7 @@ wss.on('connection', function connection(ws) {
 		month: 8,
 		year: 2018,
 	}];
-	
+
 	let measurerValue = 533100;
 	let measurerDiff = 0;
 
@@ -87,7 +92,7 @@ wss.on('connection', function connection(ws) {
 			month: 9,
 			year: 2018
 		}]));
-	}, 5000);
+	}, 1000);
 });
 
 /*LiveReaload section*/

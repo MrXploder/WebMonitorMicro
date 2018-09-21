@@ -1,6 +1,6 @@
 body {
   background-image: url(../img/bg.jpg);
-}
+  font-family: 'Ubuntu', sans-seri}
 
 .middle{
 	vertical-align: middle;
@@ -757,19 +757,6 @@ body {
 
 .center-text{
   text-align: center;
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../webfonts/ubuntu-v12-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Ubuntu Regular'), local('Ubuntu-Regular'),
-       url('../webfonts/ubuntu-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../webfonts/ubuntu-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../webfonts/ubuntu-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../webfonts/ubuntu-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../webfonts/ubuntu-v12-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
 }
 
 .panel-shadow{

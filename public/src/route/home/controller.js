@@ -41,8 +41,8 @@
 				animation: {
 					duration: 1,
 					onComplete: function() {
-						var chartInstance = this.chart,
-							ctx = chartInstance.ctx;
+						var chartInstance = this.chart;
+						var ctx = chartInstance.ctx;
 
 						ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
 						ctx.textAlign = 'center';
@@ -68,7 +68,6 @@
 			data: [],
 		}
 
-
 		activate();
 		/////////////////////////////////////////////////////////
 
@@ -85,20 +84,38 @@
 
 			$ctrl.$ChartTwo.data = [];
 
+			/**
+			If only we could pass an array of objects to the chartjs library :(
+			*/
 			newValue.forEach(item => {
 				$ctrl.$Chart.labels.push(item.timestamp.format("MMM").toString());
 				$ctrl.$Chart.colors.push(item.color);
 				$ctrl.$Chart.data.push(Math.floor(item.diffK));
 			});
 
-			$ctrl.$ChartTwo.data = [$ctrl.$Chart.data[0], $ctrl.$Chart.data[12]];
-			$ctrl.$ChartTwo.percentage = $ctrl.$Chart.data[0] - $ctrl.$Chart.data[12];
-			
-			$ctrl.$ChartThree.data = [$ctrl.$Chart.data[11], $ctrl.$Chart.data[12]];
-			$ctrl.$ChartThree.percentage = $ctrl.$Chart.data[11] - $ctrl.$Chart.data[12];
+			/**
+			$ctrl.$Chart.data always have 13 items, so, for the sake of simplicity we do this
+			*/
+			const [first, , , , , , , , , , , secondToLast, last] = $ctrl.$Chart.data;
 
+			$ctrl.$ChartTwo.data = [first, last];
+			$ctrl.$ChartThree.data = [secondToLast, last];
 
+			if ((first - last) >= 1) {
+				$ctrl.$ChartTwo.percentage = first - last;
+				$ctrl.$ChartTwo.relation = "menos";
+			} else {
+				$ctrl.$ChartTwo.percentage = last - first;
+				$ctrl.$ChartTwo.relation = "más";
+			}
 
+			if ((secondToLast - last) >= 1) {
+				$ctrl.$ChartThree.percentage = secondToLast - last;
+				$ctrl.$ChartThree.relation = "menos";
+			} else {
+				$ctrl.$ChartThree.percentage = last - secondToLast;
+				$ctrl.$ChartThree.relation = "más";
+			}
 		}, true);
 	}
 })(angular);

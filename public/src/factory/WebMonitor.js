@@ -24,8 +24,12 @@
 
 			If we just simply do => Collection = JSON.parse(message.data)
 			we will be setting Collection to a brand new array thus breaking the reference.
+			Forcing us to $watch for every change.
 			*/
 			let messageData = JSON.parse(message.data);
+
+			/** The ESP sends all the stored data, but we only need the last 13 months*/
+			messageData = messageData.slice(-13);
 
 			Collection.length = 0;
 
